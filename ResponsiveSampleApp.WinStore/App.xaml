@@ -1,0 +1,38 @@
+﻿<rs:ResponsiveApp
+    x:Class="ResponsiveSampleApp.WinRT.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:rs="using:KlingDigital.ResponsiveStyles.WinRT"
+    xmlns:m="using:KlingDigital.ResponsiveStyles.WinRT.Methods">
+    <rs:ResponsiveApp.Resources>
+
+        <rs:MethodCollection x:Key="responsiveStyles">
+            
+            <!--
+                other methods:
+                - ResponsiveWidth
+                - ResponsiveHeight
+            -->
+        
+            <!--orientation style switcher-->
+            <m:ResponsiveOrientation>
+                <m:ResponsiveOrientation.PortraitStyles>
+                    <rs:ResourceDictionaryCollection>
+                        <!--portrait styles-->
+                        <ResourceDictionary Source="/Styles/Portrait.xaml" />
+                    </rs:ResourceDictionaryCollection>
+                </m:ResponsiveOrientation.PortraitStyles>
+                <m:ResponsiveOrientation.LandscapeStyles>
+                    <rs:ResourceDictionaryCollection>
+                        <!--landscape styles-->
+                        <ResourceDictionary Source="/Styles/Landscape.xaml" />
+                    </rs:ResourceDictionaryCollection>
+                </m:ResponsiveOrientation.LandscapeStyles>
+            </m:ResponsiveOrientation>
+
+        </rs:MethodCollection>
+
+    </rs:ResponsiveApp.Resources>
+    
+    
+</rs:ResponsiveApp>

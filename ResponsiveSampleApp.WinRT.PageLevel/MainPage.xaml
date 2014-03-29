@@ -1,0 +1,45 @@
+﻿<rs:ResponsivePage
+    x:Class="ResponsiveSampleApp.WinRT.PageLevel.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ResponsiveSampleApp.WinRT.PageLevel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rs="using:KlingDigital.ResponsiveStyles.WinRT"
+    xmlns:m="using:KlingDigital.ResponsiveStyles.WinRT.Methods"
+    mc:Ignorable="d">
+    <rs:ResponsivePage.ResponsiveMethods>
+        <rs:MethodCollection>
+
+            <!--
+            other methods:
+            - ResponsiveOrientation
+            - ResponsiveHeight
+            -->
+
+            <!--style switch for width changes-->
+            <m:ResponsiveWidth CompactWidth="500">
+                <m:ResponsiveWidth.CompactStyles>
+                    <rs:ResourceDictionaryCollection>
+                        <!--snapped styles-->
+                        <ResourceDictionary Source="/Styles/Snapped.xaml" />
+                    </rs:ResourceDictionaryCollection>
+                </m:ResponsiveWidth.CompactStyles>
+                <m:ResponsiveWidth.RegularStyles>
+                    <rs:ResourceDictionaryCollection>
+                        <!--full styles-->
+                        <ResourceDictionary Source="/Styles/Full.xaml" />
+                    </rs:ResourceDictionaryCollection>
+                </m:ResponsiveWidth.RegularStyles>
+            </m:ResponsiveWidth>
+
+        </rs:MethodCollection>
+    </rs:ResponsivePage.ResponsiveMethods>
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+        <TextBlock>(Using page level app style switcher)</TextBlock>
+        <TextBlock>Dock app extra small</TextBlock>
+        <Button>to see style changes</Button>
+    </StackPanel>
+    
+</rs:ResponsivePage>
