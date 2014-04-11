@@ -60,28 +60,11 @@ namespace KlingDigital.ResponsiveStyles.WPF.Methods
 
         void determineStyle(double newHeight, IList<ResourceDictionary> resources)
         {
-            //DEFAULT STYLE
-
-            //apply default regular styles
-            if (state == eResponsiveState.None)
-            {
-                state = eResponsiveState.Regular;
-
-                //clear existing responsive styles if any
-                removeExistingStyles(resources);
-
-                //add compact style xaml to resources
-                if (this.RegularStyles != null)
-                {
-                    foreach (var style in this.RegularStyles)
-                        resources.Add(style);
-                }
-            }
-
             //STYLE SWITCHING
 
             //switch to compact styles
-            if (state == eResponsiveState.Regular && newHeight <= this.CompactHeight)
+            if ((state == eResponsiveState.Regular || state == eResponsiveState.None) 
+              && newHeight <= this.CompactHeight)
             {
                 state = eResponsiveState.Compact;
 
@@ -97,7 +80,8 @@ namespace KlingDigital.ResponsiveStyles.WPF.Methods
 
             }
             //switch to regular styles
-            else if (state == eResponsiveState.Compact && newHeight > this.CompactHeight)
+            else if ((state == eResponsiveState.Compact || state == eResponsiveState.None) 
+                  && newHeight > this.CompactHeight)
             {
                 state = eResponsiveState.Regular;
 
@@ -133,7 +117,8 @@ namespace KlingDigital.ResponsiveStyles.WPF.Methods
                 var match = allStyles.FirstOrDefault(s => s.Source == res.Source);
                 if (match != null)
                 {
-                    resources.Remove(res);
+                    resources.RemoveAt(i);
+                    i--;
                 }
             }
 
